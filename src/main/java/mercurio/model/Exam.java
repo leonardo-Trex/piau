@@ -1,5 +1,6 @@
 package mercurio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -16,6 +17,7 @@ public class Exam extends Commitment {
     private Status status;
 
     @OneToMany(mappedBy = "exam")
+    @JsonIgnore
     private final List<Topic> topics = new ArrayList<>();
 
     public Exam() {}
