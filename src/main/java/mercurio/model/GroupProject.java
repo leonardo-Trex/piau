@@ -1,9 +1,11 @@
 package mercurio.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import mercurio.model.enums.Status;
 
 @Entity
+@Table(name = "group_project")
 public class GroupProject extends Commitment {
     private String myRole;
     private Status status;

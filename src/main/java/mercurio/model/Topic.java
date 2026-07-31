@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import mercurio.model.enums.Proficiency;
 
 @Entity
+@Table(name = "topic")
 public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

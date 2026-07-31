@@ -2,6 +2,7 @@ package mercurio.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import mercurio.model.enums.Status;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Entity
+@Table(name = "exam")
 public class Exam extends Commitment {
 
     private Status status;
