@@ -1,9 +1,6 @@
 package mercurio.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import mercurio.model.enums.Proficiency;
 
 @Entity
@@ -16,12 +13,16 @@ public class Topic {
 
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "exam_id")
+    private Exam exam;
+
+
     public Topic() {}
 
     public Long getId() {
         return id;
     }
-
 
     public Proficiency getProficiency() {
         return proficiency;
@@ -38,4 +39,13 @@ public class Topic {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public Exam getExam() {
+        return exam;
+    }
+
+    public void setExam(Exam exam) {
+        this.exam = exam;
+    }
+
 }
