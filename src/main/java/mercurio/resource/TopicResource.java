@@ -1,12 +1,11 @@
 package mercurio.resource;
 
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import mercurio.dto.topic.TopicCreateDTO;
+import mercurio.dto.topic.TopicResponseDTO;
 import mercurio.service.interfaces.TopicService;
 
 @Path("/topics")
@@ -14,6 +13,16 @@ public class TopicResource {
 
     @Inject
     TopicService service;
+
+    @POST
+    public Response create(TopicCreateDTO dto) {
+        TopicResponseDTO response = service.create(dto);
+
+        return Response
+                .status(Response.Status.CREATED)
+                .entity(response)
+                .build();
+    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

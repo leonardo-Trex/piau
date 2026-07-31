@@ -9,6 +9,6 @@ public record TopicResponseDTO(
         Long id,
         String description,
         Proficiency proficiency,
-        Exam exam
+        Exam exam // TODO talvez esse cara não seja tão útil?
 ) {
 }

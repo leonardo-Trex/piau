@@ -3,6 +3,7 @@ package mercurio.mapper;
 import mercurio.dto.topic.TopicCreateDTO;
 import mercurio.dto.topic.TopicResponseDTO;
 import mercurio.model.Topic;
+import mercurio.model.enums.Proficiency;
 
 public class TopicMapper {
 
@@ -16,5 +17,18 @@ public class TopicMapper {
                 topic.getProficiency(),
                 topic.getExam()
         );
+    }
+
+    public static Topic toEntity(TopicCreateDTO dto) {
+        if (dto == null)
+            return null;
+
+        Topic t = new Topic();
+
+        t.setDescription(dto.description());
+//        TODO Fix this gambiarra
+        t.setProficiency(Proficiency.KNOW_NOTHING);
+
+        return t;
     }
 }

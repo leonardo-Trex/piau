@@ -1,4 +1,10 @@
 package mercurio.dto.topic;
 
-public record TopicCreateDTO() {
+import mercurio.model.enums.Proficiency;
+
+public record TopicCreateDTO(
+//        TODO Fix this
+//        Proficiency proficiency,
+        String description
+) {
 }
