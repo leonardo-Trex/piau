@@ -7,13 +7,14 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import mercurio.service.interfaces.GroupProjectService;
 import mercurio.service.interfaces.TopicService;
 
-@Path("/topics")
-public class TopicResource {
+@Path("/group_projects")
+public class GroupProjectResource {
 
     @Inject
-    TopicService service;
+    GroupProjectService service;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
