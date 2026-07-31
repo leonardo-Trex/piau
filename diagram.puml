@@ -1,27 +1,37 @@
 @startuml
-'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+enum Status {
+    GUARANTEED
+    NEED_GRADE
+    FIFTY_FIFTY
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+enum Proficiency {
+    KNOW_IT_WELL
+    KNOW_NOTHING
+    ' mais-ou-menos
+    SO_SO
+}
+
+abstract class Commitment {
+    id: Long
+    deadline: LocalDate
+    description: String
+}
+
+class Exam extends Commitment {
+    topics: List<Topic>
+    status: Status
+}
+
+class Topic {
+    proficiency: Proficiency
+    description: String
+}
+
+class Assignment extends Commitment {
+    myRole: String
+    status: Status
 }
 
 @enduml
