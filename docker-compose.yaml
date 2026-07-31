@@ -1,2 +1,11 @@
 services:
-  $END$
+  postgres-db:
+    image: postgres:latest
+    container_name: piau-postgres
+    environment:
+      POSTGRES_DB: piaudb
+      POSTGRES_USER: piau
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5432:5432"
+
