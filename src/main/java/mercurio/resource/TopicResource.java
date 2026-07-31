@@ -46,4 +46,12 @@ public class TopicResource {
         service.update(dto, id);
         return Response.ok().build();
     }
+
+    @DELETE
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response delete(@PathParam("id") Long id) {
+        service.deleteById(id);
+        return Response.ok().build();
+    }
 }

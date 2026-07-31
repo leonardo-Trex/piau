@@ -15,4 +15,6 @@ public interface TopicService {
     List<TopicResponseDTO> findAll();
 
     void update(TopicCreateDTO dto, Long id);
+
+    void deleteById(Long id);
 }

@@ -59,4 +59,10 @@ public class TopicServiceImpl implements TopicService {
         topic.setProficiency(p);
         topic.setDescription(dto.description());
     }
+
+    @Override
+    @Transactional
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+    }
 }
