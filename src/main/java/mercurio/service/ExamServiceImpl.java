@@ -2,6 +2,7 @@ package mercurio.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import mercurio.dto.exam.ExamResponseDTO;
 import mercurio.mapper.ExamMapper;
 import mercurio.repository.ExamRepository;
@@ -26,5 +27,11 @@ public class ExamServiceImpl implements ExamService {
         return repository.findAll().stream()
                 .map(ExamMapper::toResponse)
                 .toList();
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(Long id) {
+        repository.deleteById(id);
     }
 }

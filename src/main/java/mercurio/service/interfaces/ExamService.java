@@ -9,4 +9,6 @@ public interface ExamService {
     ExamResponseDTO findById(Long id);
 
     List<ExamResponseDTO> findAll();
+
+    void deleteById(Long id);
 }
