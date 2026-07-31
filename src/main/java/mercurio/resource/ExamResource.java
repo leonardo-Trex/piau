@@ -4,6 +4,8 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import mercurio.dto.exam.ExamCreateDTO;
+import mercurio.dto.exam.ExamResponseDTO;
 import mercurio.service.interfaces.ExamService;
 import mercurio.service.interfaces.TopicService;
 
@@ -26,6 +28,13 @@ public class ExamResource {
     public Response findById(@PathParam("id") Long id) {
 
         return Response.ok(service.findById(id)).build();
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response create(ExamCreateDTO createDTO) {
+        ExamResponseDTO responseDTO = service.create(createDTO);
+        return Response.status(Response.Status.CREATED).entity(responseDTO).build();
     }
 
     @DELETE

@@ -21,7 +21,7 @@ public class Exam extends Commitment {
 
     @OneToMany(mappedBy = "exam")
     @JsonIgnore
-    private final List<Topic> topics = new ArrayList<>();
+    private final List<Topic> topics = new ArrayList<>(); // FIXME maybe a Set?
 
     public Exam() {}
 
@@ -35,5 +35,9 @@ public class Exam extends Commitment {
 
     public List<Topic> getTopics() {
         return Collections.unmodifiableList(this.topics);
+    }
+
+    public void addTopics(List<Topic> topics) {
+        this.topics.addAll(topics); // Thanks standard library
     }
 }

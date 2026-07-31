@@ -9,7 +9,7 @@ import java.util.List;
 public record ExamCreateDTO(
         LocalDate deadline,
         String description,
-        Status status,
-        List<Topic> topics
+        Long statusId,
+        List<Long> topicIds
 ) {
 }
