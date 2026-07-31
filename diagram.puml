@@ -34,4 +34,6 @@ class Assignment extends Commitment {
     status: Status
 }
 
+Exam *-- Topic
+
 @enduml
