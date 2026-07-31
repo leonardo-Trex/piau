@@ -9,4 +9,6 @@ public interface GroupProjectService {
     GroupProjectResponseDTO findById(Long id);
 
     List<GroupProjectResponseDTO> findAll();
+
+    void deleteById(Long id);
 }

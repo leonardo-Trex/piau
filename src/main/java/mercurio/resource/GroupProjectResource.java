@@ -1,10 +1,7 @@
 package mercurio.resource;
 
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import mercurio.service.interfaces.GroupProjectService;
@@ -29,5 +26,13 @@ public class GroupProjectResource {
     public Response findById(@PathParam("id") Long id) {
 
         return Response.ok(service.findById(id)).build();
+    }
+
+    @DELETE
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response delete(@PathParam("id") Long id) {
+        service.deleteById(id);
+        return Response.ok().build();
     }
 }

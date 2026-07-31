@@ -2,6 +2,7 @@ package mercurio.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import mercurio.dto.group_project.GroupProjectResponseDTO;
 import mercurio.mapper.GroupProjectMapper;
 import mercurio.repository.GroupProjectRepository;
@@ -26,5 +27,11 @@ public class GroupProjectServiceImpl implements GroupProjectService {
         return repository.findAll().stream()
                 .map(GroupProjectMapper::toResponse)
                 .toList();
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(Long id) {
+        repository.deleteById(id);
     }
 }
