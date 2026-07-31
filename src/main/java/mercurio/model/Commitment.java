@@ -16,6 +16,8 @@ public abstract class Commitment  {
     private LocalDate deadline;
     private String description;
 
+    public Commitment() {}
+
     public LocalDate getDeadline() {
         return deadline;
     }
