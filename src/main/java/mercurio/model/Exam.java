@@ -1,9 +1,11 @@
 package mercurio.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import mercurio.converter.StatusConverter;
 import mercurio.model.enums.Status;
 
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ import java.util.List;
 @Table(name = "exams")
 public class Exam extends Commitment {
 
+    @Convert(converter = StatusConverter.class)
     private Status status;
 
     @OneToMany(mappedBy = "exam")

@@ -1,6 +1,7 @@
 package mercurio.model;
 
 import jakarta.persistence.*;
+import mercurio.converter.ProficiencyConverter;
 import mercurio.model.enums.Proficiency;
 
 @Entity
@@ -10,6 +11,7 @@ public class Topic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Convert(converter = ProficiencyConverter.class)
     private Proficiency proficiency;
 
     private String description;

@@ -1,8 +1,10 @@
 package mercurio.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import mercurio.converter.StatusConverter;
 import mercurio.model.enums.Status;
 
 @Entity
@@ -11,6 +13,8 @@ public class GroupProject extends Commitment {
 
     @Column(name = "my_role")
     private String myRole;
+
+    @Convert(converter = StatusConverter.class)
     private Status status;
 
     public GroupProject() {}
