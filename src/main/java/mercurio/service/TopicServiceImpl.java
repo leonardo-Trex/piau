@@ -7,6 +7,7 @@ import mercurio.dto.topic.TopicCreateDTO;
 import mercurio.dto.topic.TopicResponseDTO;
 import mercurio.mapper.TopicMapper;
 import mercurio.model.Topic;
+import mercurio.model.enums.Proficiency;
 import mercurio.repository.TopicRepository;
 import mercurio.service.interfaces.TopicService;
 
@@ -39,5 +40,23 @@ public class TopicServiceImpl implements TopicService {
         return repository.findAll().stream()
                 .map(TopicMapper::toResponse)
                 .toList();
+    }
+
+    @Override
+    @Transactional
+    public void update(TopicCreateDTO dto, Long id) {
+        if (dto == null || id == null)
+            return;
+
+        Proficiency p = Proficiency.of(dto.proficiencyId());
+//        FIXME Optional type?
+        Topic topic = repository.findById(id);
+
+//        TODO maybe an exception?
+        if (topic == null)
+            return;
+
+        topic.setProficiency(p);
+        topic.setDescription(dto.description());
     }
 }

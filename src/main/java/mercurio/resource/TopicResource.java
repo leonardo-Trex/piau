@@ -38,4 +38,12 @@ public class TopicResource {
 
         return Response.ok(service.findById(id)).build();
     }
+
+    @PUT
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response update(TopicCreateDTO dto, @PathParam("id") Long id) {
+        service.update(dto, id);
+        return Response.ok().build();
+    }
 }

@@ -23,11 +23,12 @@ public class TopicMapper {
         if (dto == null)
             return null;
 
+//        Eu vou aceitar valores null.
+        Proficiency p = Proficiency.of(dto.proficiencyId());
         Topic t = new Topic();
 
         t.setDescription(dto.description());
-//        TODO Fix this gambiarra
-        t.setProficiency(Proficiency.KNOW_NOTHING);
+        t.setProficiency(p);
 
         return t;
     }
