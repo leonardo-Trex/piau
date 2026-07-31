@@ -5,7 +5,7 @@ import jakarta.persistence.Table;
 import mercurio.model.enums.Status;
 
 @Entity
-@Table(name = "group_project")
+@Table(name = "group_projects")
 public class GroupProject extends Commitment {
     private String myRole;
     private Status status;

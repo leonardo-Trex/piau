@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Entity
-@Table(name = "exam")
+@Table(name = "exams")
 public class Exam extends Commitment {
 
     private Status status;
