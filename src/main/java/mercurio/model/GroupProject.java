@@ -4,11 +4,11 @@ import jakarta.persistence.Entity;
 import mercurio.model.enums.Status;
 
 @Entity
-public class Assignment extends Commitment {
+public class GroupProject extends Commitment {
     private String myRole;
     private Status status;
 
-    public Assignment() {}
+    public GroupProject() {}
 
     public String getMyRole() {
         return myRole;
