@@ -13,6 +13,8 @@ public interface GroupProjectService {
 
     GroupProjectResponseDTO create(GroupProjectCreateDTO dto);
 
+    void update(GroupProjectCreateDTO dto, Long id);
+
     void deleteById(Long id);
 
 }

@@ -43,6 +43,16 @@ public class GroupProjectServiceImpl implements GroupProjectService {
 
     @Override
     @Transactional
+    public void update(GroupProjectCreateDTO dto, Long id) {
+        GroupProject gp = repository.findById(id);
+//        FIXME enum e error handling
+        gp.setDescription(dto.description());
+        gp.setDeadline(dto.deadline());
+        gp.setMyRole(dto.myRole());
+    }
+
+    @Override
+    @Transactional
     public void deleteById(Long id) {
         repository.deleteById(id);
     }
