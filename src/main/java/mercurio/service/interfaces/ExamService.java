@@ -14,4 +14,6 @@ public interface ExamService {
     ExamResponseDTO create(ExamCreateDTO dto);
 
     void deleteById(Long id);
+
+    void update(Long id, ExamCreateDTO createDTO);
 }

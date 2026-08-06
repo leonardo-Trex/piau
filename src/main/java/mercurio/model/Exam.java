@@ -1,10 +1,7 @@
 package mercurio.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Convert;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import mercurio.converter.StatusConverter;
 import mercurio.model.enums.Status;
 
@@ -19,9 +16,9 @@ public class Exam extends Commitment {
     @Convert(converter = StatusConverter.class)
     private Status status;
 
-    @OneToMany(mappedBy = "exam")
+    @OneToMany(mappedBy = "exam", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
-    private final List<Topic> topics = new ArrayList<>(); // FIXME maybe a Set?
+    private final List<Topic> topics = new ArrayList<>(); // maybe a set?
 
     public Exam() {}
 
@@ -38,6 +35,10 @@ public class Exam extends Commitment {
     }
 
     public void addTopics(List<Topic> topics) {
+
+        topics.forEach(t -> {
+            t.setExam(this);
+        });
         this.topics.addAll(topics); // Thanks standard library
     }
 }

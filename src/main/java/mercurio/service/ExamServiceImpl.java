@@ -8,6 +8,7 @@ import mercurio.dto.exam.ExamResponseDTO;
 import mercurio.mapper.ExamMapper;
 import mercurio.model.Exam;
 import mercurio.model.Topic;
+import mercurio.model.enums.Status;
 import mercurio.repository.ExamRepository;
 import mercurio.repository.TopicRepository;
 import mercurio.service.interfaces.ExamService;
@@ -46,7 +47,6 @@ public class ExamServiceImpl implements ExamService {
         Exam exam = ExamMapper.toEntity(dto);
         List<Topic> list = findTopicsByIds(dto.topicIds()); // Not elegant
         exam.addTopics(list);
-
         examRepository.persist(exam);
 
         return ExamMapper.toResponse(exam);
@@ -56,6 +56,27 @@ public class ExamServiceImpl implements ExamService {
     @Transactional
     public void deleteById(Long id) {
         examRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public void update(Long id, ExamCreateDTO dto) {
+        if (dto == null || id == null)
+            return;
+
+
+        Exam exam = examRepository.findById(id);
+        //        TODO maybe an exception?
+        if (exam == null)
+            return;
+
+        Status status = Status.of(dto.statusId());
+        List<Topic> topics = findTopicsByIds(dto.topicIds());
+
+        exam.setDeadline(dto.deadline());
+        exam.setStatus(status);
+        exam.setDescription(dto.description());
+        exam.addTopics(topics);
     }
 
     private List<Topic> findTopicsByIds(List<Long> ids) {

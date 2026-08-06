@@ -37,6 +37,14 @@ public class ExamResource {
         return Response.status(Response.Status.CREATED).entity(responseDTO).build();
     }
 
+    @PUT
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response update(@PathParam("id") Long id, ExamCreateDTO dto) {
+        service.update(id, dto);
+        return Response.ok().build();
+    }
+
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
