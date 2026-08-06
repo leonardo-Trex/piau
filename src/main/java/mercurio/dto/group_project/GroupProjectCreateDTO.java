@@ -1,4 +1,10 @@
 package mercurio.dto.group_project;
 
-public record GroupProjectCreateDTO() {
+import java.time.LocalDate;
+
+public record GroupProjectCreateDTO(
+        String    myRole,
+        LocalDate deadline,
+        String    description
+) {
 }

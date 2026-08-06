@@ -4,14 +4,18 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import mercurio.dto.group_project.GroupProjectCreateDTO;
+import mercurio.dto.group_project.GroupProjectResponseDTO;
 import mercurio.service.interfaces.GroupProjectService;
-import mercurio.service.interfaces.TopicService;
 
 @Path("/group_projects")
 public class GroupProjectResource {
 
     @Inject
     GroupProjectService service;
+
+
+
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -26,6 +30,17 @@ public class GroupProjectResource {
     public Response findById(@PathParam("id") Long id) {
 
         return Response.ok(service.findById(id)).build();
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response create(GroupProjectCreateDTO dto) {
+
+        GroupProjectResponseDTO response = service.create(dto);
+        return Response
+                .status(Response.Status.CREATED)
+                .entity(response)
+                .build();
     }
 
     @DELETE
